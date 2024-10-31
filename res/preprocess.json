@@ -1,0 +1,178 @@
+{
+    "boiler_plate_terms": [
+        "Quitting tobacco use - B23",
+        "Quit smoking clinic",
+        "handouts are available for some of these issues quitting",
+        "could be caused by things like high blood pressure or smoking",
+        "no smoking",
+        "visiting hours Smoking policy",
+        "Discourage smoking Discourage excessive intake",
+        "stop smoking",
+        "educat", 
+        "FOR AT LEAST 24 HOURS AVOID THE FOLLOWING SMOKING CHEWING",
+        "To refrain from smoking at least 8 hours prior to surgery",
+        "Do not drink alcohol or smoke",
+        "caesation",
+        "no etoh or tobacco",
+        "do not smoke",
+        "FOLLOW UP RETURN APPOINTMENT",
+        "RESEARCH"
+    ], 
+
+    "snippet_patterns" : [
+        "((?:\\b\\w+\\b\\s*){0,20})(?:\\b(non-smoker|ex-smoker|smoking|smoke|smoker|cig|cigarette|tobacco use|tobacco|tob|PPD)\\b)((?:\\s*\\S+\\s*){0,15})"     
+        ],
+
+    "standardization_patterns1": [
+        ["no", [
+            "\\bN\\b",
+            "(Current)............: [NO]",
+            "none\\b.",
+            "none",
+            "not",
+            "non",
+            "never",
+            "denied",
+            "deny",
+            "denies",
+            "no\\b.",
+            "\\bnot(?:\\s+a)?\\s+current\\b",
+            "\\( -\\)"
+        ]],
+
+        ["smoke", [
+            "\\bactive tobacco use:?\\b",
+            "\\bactive smoker:\\b",
+            "\\bcurrent tobacco user:\\b",
+            "\\btobacco\\b",
+            "\\bsmoking\\b",
+            "\\bsmoker\\b",
+            "\\btobacco use\\b",
+            "\\bof smoke\\b",
+            "\\bsmoked\\b",
+            "\\btob\\b",
+            "\\bActive\\b", 
+            "\\bSmoking\\b",
+            "do you currently smoke smokeless smoke pipes"
+        ]],
+
+        ["denied", [
+            "\\b(?:denies|denied|deny)\\s+(?:current|active)\\b"
+        ]],
+
+        ["no smoke", [
+            "smoke: no",
+            "smoke - no",
+            "smoke-no",
+            "smoke:no",
+            "smoke free"
+        ]],
+
+        ["", [
+           "No Hypertension",
+           "no diabetes",
+           "no family history of CAD",
+           "no history of alcohol abuse",
+           "no dyslipidemia",
+           "no hyperlipidemia"
+        ]],
+
+        ["yes", [
+            "\\bY\\b"
+        ]]
+    ],
+
+    "standardization_patterns2": [
+        ["non user", ["\\[x\\]No|smoke (X)"]],
+
+        ["current user", [
+            "\\[\\]No",
+            "smoke (0)",
+            "no interested in quitting"
+        ]],
+
+        ["", [
+            "\\[\\]Yes",
+            "\\[\\]No",
+            "\\bexercise and to quit smoking and refrain from smoking, alcohol and illicit drug use\\b",
+            "\\bcurrent medications\\b"
+        ]],
+
+        ["etoh", [
+            "\\balcohol\\b",
+            "\\bdrinking\\b",
+            "\\bdrink\\b",
+            "\\billicit\\b",
+            "\\alcohol use\\b'"
+        ]],
+
+        ["drug", [
+            "\\b(?:illicit\\s+)?substances?\\b",
+            "\\billicit drug\\b"
+        ]],
+
+        ["",[
+            "\\b(?:etoh|etoh\\s+use):\\s+(\\w+)\\b",
+            "\\b(?:drug|drug\\s+use):\\s+(\\w+)\\b",
+            "review.*?partake",
+            "\\babuse\\b",
+            "\\bchronic\\b",
+            "\\bin\\b",
+            "\\bearly\\b",
+            "\\buse\\b",
+            "\\bimportance of no smoke\\b",
+            "\\bdo no smoke\\b",
+            "\\b(?:no\\shistory\\s)?(?:no\\s)?current\\ drug\\ use\\b",
+            "current status",
+            "\\bwilling to quit?\\b",
+            "medication to quit smoke"
+        ]]
+    ],
+
+    "standardization_patterns3": [
+        ["smoke quit", [
+            "\\bquit\\w+\\b",
+            "\\beven if quit:\\b'"
+        ]],
+        
+        ["", [
+            "\\b(cigarettes?|cigars?)\\b"
+        ]],
+
+        ["history", [
+            "\\bhx\\b",
+            "\\bhistory of\\b"
+        ]],
+        
+        ["", [
+            "\\bhe\\b",
+            "\\bshe\\b",
+            "\\bpatient\\b",
+            "\\bpt\\b",
+            "\\bcurrent drug\\b",
+            "\\bformer etoh\\b",
+            "\\betoh quit\\b",
+            "\\betoh no\\b",
+            "\\bquit etoh\\b",
+            "\bcocaine\\s*quit\b",
+            "\\bcurrent etoh\\b",
+            "exercise and to quit smoke and refrain from smoke",
+            "chewable.*?lozenges",
+            "chewable.*?oral",
+            "chewable.*?lozenge",
+            "lozenge.*?daily",
+            "chewable.*?smoke",
+            "(lozenge|lozenges).*?smoke"
+        ]],
+
+        ["no", [
+            "\\bcurrent no\\b",
+            "\\bno current\\b",
+            "\\bno currently\\b",
+            "\\bno any current\\b",
+            "\\byes xno\\b",
+            "\\byes x no\\b"
+        ]]
+    ]
+
+}

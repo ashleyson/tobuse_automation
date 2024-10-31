@@ -1,0 +1,52 @@
+{
+    "NON SMOKER": [
+        "used to",
+        "none",
+        "denies",
+        "never",
+        "does not smoke",
+        "nonsmoker",
+        "no",
+        "neg",
+        "smoked",
+        "quit",
+        "na",
+        "previous",
+        "prior",
+        "former",
+        
+    ],
+    "CURRENT SMOKER": [
+        "current",
+        "smoke",
+        "daily",
+        "yes",
+        "week",
+        "days",
+        "day",
+        "\\bcurrent\\s+smoke\\b(?!\\s*no\\b)",
+        "ongoing smoke"
+    ],
+    "FORMER SMOKER": [
+        "smoke\\s+(?:dependence|disorder)\\s+remission",
+        "\\b(?:former|remote|past|ex|previous|prior)\\s*(?:\\w+\\s+)?smoke\\b",
+        "\\b(?:smoke\\s+(?:previous|former|prior|remote|ex|past))\\b"
+    ],
+    "NON SMOKER": [
+        "smoke non user",
+        "no history (?:sof)?\\s?smoke",
+        "current smoke\\? no",
+        "no smoke"
+    ],
+    "CURRENT SMOKER" :[
+        "smoke current user",
+        "\\b(?:active|current|recurrent|ongoing|continue to)\\s*(?:\\w+\\s+)?smoke\\b",
+        "\\b(?:smoke\\s+(?:active|recurrent|yes|current))\\b",
+        "still smoke",
+        "\\b(?:to|will|discussed|about|goal|interest(?:ed)?\\ in|if|must|can|no\\ intention|plans\\ on)\\s(?:smoke\\s)?quit\\b"
+    ],
+    "QUIT SMOKER": [
+        "remote (smoke|history|minimal smoke)",
+        "\\b(?!(?:must|if|to|can|will|had|of)\\b(?:\\s+\\b(?:must|if|to|can|wil|had)\\b\\s+)etoh\\s+quit\\b)(?=.*\\bquit\\b)(?!.*\\betoh\\s+quit\\b)"
+    ]
+}

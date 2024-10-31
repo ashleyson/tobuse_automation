@@ -1,0 +1,29 @@
+{
+    "additional_patterns": [
+    ["smoke", [
+        "\\btobacco use\\b",
+        "\\btobacco\\b",
+        "\\bsmoking\\b",
+        "\\bsmoker\\b",
+        "\\bof smoke\\b",
+        "\\bsmokes\\b",
+        "\\btob\\b",
+        "\\bActive "
+    ]],
+
+    ["denies", [
+        "\\bdenied\\b",
+        "\\bdeny\\b"
+    ]]],
+
+"pattern_for_extraction": [
+    "smoke:\\s*(\\w+(?:\\s+\\w+){0,5})",
+    "smoke-\\s*(\\w+(?:\\s+\\w+){0,5})",
+    "smoke -\\s*(\\w+(?:\\s+\\w+){0,5})",
+    "smoke use:\\s*(\\w+(?:\\s+\\w+){0,5})",
+    "smoke use -\\s*(\\w+(?:\\s+\\w+){0,5})",
+    "smoke use-\\s*(\\w+(?:\\s+\\w+){0,5})"
+]
+    
+}
+
