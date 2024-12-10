@@ -1,0 +1,6 @@
+{
+    "snippet_patterns" : [
+        "((?:\\b\\w+\\b\\s*){0,20})(?:\\b(non-smoker|ex-smoker|smoking|smoke|smoker|smoked|smokes|cig|cigarette|tobacco use|tobacco|tob|PPD)\\b)((?:\\s*\\S+\\s*){0,10})"
+        ]
+
+    }

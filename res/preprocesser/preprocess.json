@@ -1,39 +1,4 @@
 {
-    "boiler_plate_terms": [
-        "Quitting tobacco use - B23",
-        "Quit smoking clinic",
-        "handouts are available for some of these issues quitting",
-        "could be caused by things like high blood pressure or smoking",
-        "no smoking",
-        "visiting hours Smoking policy",
-        "Discourage smoking Discourage excessive intake",
-        "stop smoking",
-        "educat", 
-        "FOR AT LEAST 24 HOURS AVOID THE FOLLOWING SMOKING CHEWING",
-        "To refrain from smoking at least 8 hours prior to surgery",
-        "Do not drink alcohol or smoke",
-        "caesation",
-        "no etoh or tobacco",
-        "do not smoke",
-        "FOLLOW UP RETURN APPOINTMENT",
-        "RESEARCH",
-        "drink alcohol or smoke after midnight",
-        "do not eat, drink, or smoke anything",
-        "avoid smoking",
-        "treatment for quitting tobacco",
-        "quitting smoking is a healthy choice",
-        "quit smoking gain weight",
-        "quit smoking outpt",
-        "Evacuate surgical smoke",
-        "candy, breath mints, tobacco",
-        "Quit smoking and/or chewing tobacco",
-        "needs to be off  tobacco"
-    ], 
-
-    "snippet_patterns" : [
-        "((?:\\b\\w+\\b\\s*){0,20})(?:\\b(non-smoker|ex-smoker|smoking|smoke|smoker|cig|cigarette|tobacco use|tobacco|tob|PPD)\\b)((?:\\s*\\S+\\s*){0,10})"
-        ],
-
     "standardization_patterns1": [
         ["no ", [
             "\\bn\\b",
