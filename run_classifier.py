@@ -11,7 +11,11 @@ preprocessing_file = 'res/preprocessor/preprocess.json'
 VA_questionnaire_extraction_file = 'res/va_formatted/VA_questionnaire_extraction.json'
 VA_questionnaire_classification_file = 'res/va_formatted/VA_questionnaire_classification.json'
 additional_VA_patterns_file = 'res/va_formatted/additional_VA_patterns.json'
-classification_file = 'res/classification/classify.json'
+# classification
+current_user_file = 'res/concept_tagger/current_user.json'
+former_user_file = 'res/concept_tagger/former_user.json'
+quit_user_file = 'res/concept_tagger/quit_user.json'
+non_user_file = 'res/concept_tagger/non_user.json'
 
 
 #preprocessor
@@ -23,11 +27,12 @@ vanotesclassification = VANotesClassification(VA_questionnaire_extraction_file, 
 processed_df = vanotesclassification.process_VA_data(processed_df, 'ReportText')
 
 #classification
-classification = TobaccoClassifier(classification_file)
+classification = TobaccoClassifier(current_user_file, former_user_file, quit_user_file, non_user_file)
 result_df = classification.classify_and_label(processed_df, 'preprocessed_snippets')
 
 #postprocessor
 result_df =  Postprocessor.choose_one(result_df)
+
 
 print(list(result_df))
 print(result_df)

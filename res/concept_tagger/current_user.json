@@ -1,0 +1,7 @@
+{
+    "CURRENT SMOKER": [
+        "current|daily|yes|\\bcurrent\\s+smoke\\b(?!\\s*no\\b)|ongoing smoke",
+        "smoke current user|\\b(?:active|current|recurrent|ongoing|continue to|continues to)\\s*(?:\\w+\\s+)?smoke\\b|\\b(?:smoke\\s+(?:active|recurrent|yes|current))\\b|still smoke",
+        "\\b(?:to|will|discussed|about|goal|interest(?:ed)?\\ in|if|must|can|no\\ intention|plans\\ on)\\s(?:smoke\\s)?quit\\b"
+    ]
+}

@@ -1,0 +1,27 @@
+{
+    "NON SMOKER": [
+        "used to",
+        "\\bnone\\b",
+        "denies",
+        "never",
+        "does not smoke",
+        "nonsmoker",
+        "\\bno\\b",
+        "\\bneg",
+        "smoked",
+        "quit",
+        "\\bna\\b",
+        "previous",
+        "prior",
+        "former",
+        "smoke non user",
+        "no history (?:sof)?\\s?smoke",
+        "nohistory (?:sof)?\\s?smoke",
+        "current smoke\\? no",
+        "no smoke",
+        "nosmoker",
+        "nonuser",
+        "nouser",
+        "no user"
+    ]
+}

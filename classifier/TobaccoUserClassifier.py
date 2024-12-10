@@ -4,14 +4,31 @@ import json
 from .utils import load_patterns
 
 class TobaccoClassifier:
-    def __init__(self, classification_file):  
-        self.classification_patterns = load_patterns(classification_file)
+    def __init__(self, current_smoker_file, former_smoker_file, quit_smoker_file, non_smoker_file):  
+        """
+        Loads classification patterns from individual JSON files.
+        
+        :param current_smoker_file: Path to the CURRENT SMOKER patterns file
+        :param former_smoker_file: Path to the FORMER SMOKER patterns file
+        :param quit_smoker_file: Path to the QUIT SMOKER patterns file
+        :param non_smoker_file: Path to the NON SMOKER patterns file
+        """
+        self.current_smoker_patterns = load_patterns(current_smoker_file)
+        self.former_smoker_patterns = load_patterns(former_smoker_file)
+        self.quit_smoker_patterns = load_patterns(quit_smoker_file)
+        self.non_smoker_patterns = load_patterns(non_smoker_file)
+
+        self.classification_patterns = {
+            "CURRENT SMOKER": self.current_smoker_patterns.get("CURRENT SMOKER", []),
+            "FORMER SMOKER": self.former_smoker_patterns.get("FORMER SMOKER", []),
+            "QUIT SMOKER": self.quit_smoker_patterns.get("QUIT SMOKER", []),
+            "NON SMOKER": self.non_smoker_patterns.get("NON SMOKER", [])
+        }
 
     def classify_and_label(self, df: pd.DataFrame, text_column: str) -> pd.DataFrame:
         """
-        Classifies snippets in the specified text column of the DataFrame into 
-        'former/current/non smoker' and labels them.
-        
+        Classifies snippets in the specified text column of the DataFrame.
+
         :param df: DataFrame with the column to be classified
         :param text_column: Name of the column containing snippets to classify
         :return: DataFrame with added classification status and matched keyword
@@ -33,6 +50,7 @@ class TobaccoClassifier:
             if target_match:
                 target_position = target_match.start()
                 
+                # Check all classifications
                 for classification, words in self.classification_patterns.items():
                     for word in words:
                         word_pattern = re.compile(word, re.IGNORECASE)
@@ -50,8 +68,9 @@ class TobaccoClassifier:
                                     best_classification = classification
                                     matched_keyword = word_match.group()
 
+            # Check for CURRENT SMOKER separately if no classification found
             if best_classification is None:
-                for keywords in self.classification_patterns.get("CURRENT SMOKER", []):
+                for keywords in self.classification_patterns["CURRENT SMOKER"]:
                     if re.search(keywords, snippet_text, re.IGNORECASE):
                         best_classification = "CURRENT SMOKER"
                         matched_keyword = target_word

@@ -1,0 +1,7 @@
+{
+    "QUIT SMOKER": [
+        "remote (smoke|history|minimal smoke)",
+        "\\b(?!(?:must|if|to|can|will|had|of|discussed|encouraged|counselled|attempt)\\b(?:\\s+\\b(?:must|if|to|can|will|had|of|discussed|encouraged|counselled|attempt)\\b\\s+)etoh\\s+quit\\b)(?=.*\\bquit\\b)(?!.*\\betoh\\s+quit\\b)",
+        "\\b(?!(?:must|if|can|to|will|had|of|discussed|encouraged|counselled|attempt)\\b(?:\\s+\\b(?:must|if|can|to|will|had|of|discussed|encouraged|counselled|attempt)\\b\\s+)quit\\b)(?=.*\\bquit\\b)(?=.*\\s+quit\\b)"
+    ]
+}

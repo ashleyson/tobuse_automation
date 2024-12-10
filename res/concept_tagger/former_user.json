@@ -1,0 +1,13 @@
+{
+    "FORMER SMOKER": [
+        "smoke non user|no history (?:sof)?\\s?smoke|current smoke\\? no|no smoke|no an active smoke",
+        "smoke\\s+(?:dependence|disorder)\\s+remission|\\b(?:former|remote|past|ex|previous|prior)\\s*(?:\\w+\\s+)?smoke\\b|\\b(?:smoke\\s+(?:previous|former|prior|remote|ex|past))\\b",
+        "former",
+        "remote",
+        "past",
+        "previous",
+        "stopped",
+        "prior",
+        "smoke\\s+(?:dependence|disorder)\\s+remission"
+    ]
+}
