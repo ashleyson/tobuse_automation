@@ -16,44 +16,56 @@
         "no etoh or tobacco",
         "do not smoke",
         "FOLLOW UP RETURN APPOINTMENT",
-        "RESEARCH"
+        "RESEARCH",
+        "drink alcohol or smoke after midnight",
+        "do not eat, drink, or smoke anything",
+        "avoid smoking",
+        "treatment for quitting tobacco",
+        "quitting smoking is a healthy choice",
+        "quit smoking gain weight",
+        "quit smoking outpt",
+        "Evacuate surgical smoke",
+        "candy, breath mints, tobacco",
+        "Quit smoking and/or chewing tobacco",
+        "needs to be off  tobacco"
     ], 
 
     "snippet_patterns" : [
-        "((?:\\b\\w+\\b\\s*){0,20})(?:\\b(non-smoker|ex-smoker|smoking|smoke|smoker|cig|cigarette|tobacco use|tobacco|tob|PPD)\\b)((?:\\s*\\S+\\s*){0,15})"     
+        "((?:\\b\\w+\\b\\s*){0,20})(?:\\b(non-smoker|ex-smoker|smoking|smoke|smoker|cig|cigarette|tobacco use|tobacco|tob|PPD)\\b)((?:\\s*\\S+\\s*){0,10})"
         ],
 
     "standardization_patterns1": [
-        ["no", [
-            "\\bN\\b",
-            "(Current)............: [NO]",
-            "none\\b.",
-            "none",
+        ["no ", [
+            "\\bn\\b",
+            "(current)............: [no]",
+            "none\\b",
             "not",
             "non",
             "never",
             "denied",
             "deny",
+            "abstains",
             "denies",
             "no\\b.",
             "\\bnot(?:\\s+a)?\\s+current\\b",
-            "\\( -\\)"
+            "\\( -\\)",
+            "_x__no___yes",
+            "\\[x\\]n \\[\\]y"
         ]],
 
         ["smoke", [
-            "\\bactive tobacco use:?\\b",
-            "\\bactive smoker:\\b",
-            "\\bcurrent tobacco user:\\b",
-            "\\btobacco\\b",
-            "\\bsmoking\\b",
-            "\\bsmoker\\b",
-            "\\btobacco use\\b",
-            "\\bof smoke\\b",
-            "\\bsmoked\\b",
+            "smoking history",
+            "smokes",
+            "tobacco",
+            "smoking",
+            "\\bsmoker",
+            "tobacco use",
+            "\\bof smoke",
+            "\\bsmoked",
             "\\btob\\b",
-            "\\bActive\\b", 
-            "\\bSmoking\\b",
-            "do you currently smoke smokeless smoke pipes"
+            "\\bsmoking\\b",
+            "do you currently smoke smokeless smoke pipes",
+            "tobacco in the last\\s+(\\d+)\\s+days"
         ]],
 
         ["denied", [
@@ -69,7 +81,7 @@
         ]],
 
         ["", [
-           "No Hypertension",
+           "no hypertension",
            "no diabetes",
            "no family history of CAD",
            "no history of alcohol abuse",
@@ -78,17 +90,20 @@
         ]],
 
         ["yes", [
-            "\\bY\\b"
+            "\\by\\b",
+            "___no__x_yes",
+            "\\[\\]n \\[x\\]y"
         ]]
     ],
 
     "standardization_patterns2": [
-        ["non user", ["\\[x\\]No|smoke (X)"]],
+        ["non user", ["\\[x\\]no|smoke (X)"]],
 
         ["current user", [
             "\\[\\]No",
             "smoke (0)",
-            "no interested in quitting"
+            "no interested in quitting",
+            "no interest in quitting"
         ]],
 
         ["", [
@@ -139,7 +154,7 @@
             "\\b(cigarettes?|cigars?)\\b"
         ]],
 
-        ["history", [
+        ["history ", [
             "\\bhx\\b",
             "\\bhistory of\\b"
         ]],
@@ -156,6 +171,8 @@
             "\\bquit etoh\\b",
             "\bcocaine\\s*quit\b",
             "\\bcurrent etoh\\b",
+            "\\bhim\\b",
+            "\\bher\\b",
             "exercise and to quit smoke and refrain from smoke",
             "chewable.*?lozenges",
             "chewable.*?oral",

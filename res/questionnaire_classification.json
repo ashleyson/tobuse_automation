@@ -1,0 +1,49 @@
+{
+  "NON SMOKER": [
+    "denied",
+    "non",
+    "denies",
+    "no",
+    "former",
+    "none",
+    "nil",
+    "family history",
+    "see",
+    "\\[x\\]N \\[\\]Y",
+    ">",
+    "stress",
+    "(?i)n",
+    "never",
+    "abstinence",
+    "negative",
+    "n"
+  ],
+  "QUIT SMOKER": [
+    "quit",
+    "in the past",
+    "prior",
+    "previous",
+    "ex",
+    "remote",
+    "history"
+  ],
+  "CURRENT SMOKER": [
+    "current",
+    "currently",
+    "yes",
+    "\\[\\]N \\[x\\]Y",
+    "smoker",
+    "SNOMED CT 110483000",
+    "counseled",
+    "chronic",
+    "active",
+    "daily"
+  ],
+  "NEG_TERMS" : [
+    "discuss",
+    "encouraged",
+    "\\bto\\b",
+    "___no_x__yes",
+    "\\by\\b"
+  ]
+}

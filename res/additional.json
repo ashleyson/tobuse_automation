@@ -1,29 +1,25 @@
 {
-    "additional_patterns": [
-    ["smoke", [
-        "\\btobacco use\\b",
-        "\\btobacco\\b",
-        "\\bsmoking\\b",
-        "\\bsmoker\\b",
-        "\\bof smoke\\b",
-        "\\bsmokes\\b",
-        "\\btob\\b",
-        "\\bActive "
-    ]],
-
-    ["denies", [
-        "\\bdenied\\b",
-        "\\bdeny\\b"
-    ]]],
-
-"pattern_for_extraction": [
-    "smoke:\\s*(\\w+(?:\\s+\\w+){0,5})",
-    "smoke-\\s*(\\w+(?:\\s+\\w+){0,5})",
-    "smoke -\\s*(\\w+(?:\\s+\\w+){0,5})",
-    "smoke use:\\s*(\\w+(?:\\s+\\w+){0,5})",
-    "smoke use -\\s*(\\w+(?:\\s+\\w+){0,5})",
-    "smoke use-\\s*(\\w+(?:\\s+\\w+){0,5})"
-]
-    
+  "NON SMOKER": [
+    "no history of  tobacco use",
+    "no history of tobacco use",
+    "lifetime non-user of tobacco",
+    "tobacco  non-user",
+    "Reports not using  tobacco  products in the last 12 months",
+    "is not an active  smoker"
+  ],
+  "FORMER SMOKER": [
+    "former  tobacco use",
+    "former tobacco use",
+    "INPT TOB HAS NOT USED LAST 30 DAYS"
+  ],
+  "CURRENT SMOKER": [
+    "current  tobacco use",
+    "continuous  tobacco use",
+    "Reports using  tobacco  products at least once in the past 12 months",
+    "ACTIVE    SMOKER",
+    "ACTIVE HEAVY  SMOKER",
+    "sct 110483000",
+    "SNOMED CT 110483000",
+    " is an active  smoker"
+  ]
 }
-

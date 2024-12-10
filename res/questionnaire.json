@@ -1,0 +1,16 @@
+{
+  "tobacco_pattern": [
+    "(?i)(tob\\s*[:?-]|tobacco products|tobacco history|tobacco use\\s*[:?-]|tobacco\\s*[:?-])\\s*([\\w-]+(?:\\s[\\w-]+){0,2})?\\s*",
+    "(?i)Tobacco Use  \\(Current\\)............:\\s*([\\w-]+(?:\\s+[\\w-]+)?)"
+  ],
+  "patient_use_pattern": [
+    "(?i)Has the patient used tobacco product in the last 30 days\\?\\s*(\\w+\\.?)(?:\\s+(\\w+\\.?))?(?:\\s+(\\w+.?)?)?",
+    "(?i)Do you currently use tobacco (cigarettes, smokeless tobacco, cigars,      pipes)\\?\\s*(\\w+\\.?)(?:\\s+(\\w+\\.?))?(?:\\s+(\\w+.?)?)?",
+    "(?i)Is the patient currently a  smoker\\?\\s*(\\w+\\.?)(?:\\s+(\\w+\\.?))?(?:\\s+(\\w+.?)?)?",
+    "(?I)patient is a \\s*(\\w+\\.?)(?:\\s+(\\w+\\.?))?(?:\\s+(\\w+.?)?)?"
+  ],
+  "current_smoker_pattern": [
+    "(?i)(current smoker\\s*[:?-])\\s*([\\w-]+(?:\\s[\\w-]+){0,2})?\\s*",
+    "(?i)(smoking\\s*[:?-]|smoking history\\s*[:?-])\\s*([\\w-]+(?:\\s[\\w-]+){0,2})?\\s*"
+  ]
+}
