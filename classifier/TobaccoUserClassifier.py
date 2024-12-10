@@ -2,10 +2,6 @@ import pandas as pd
 import re
 import json
 from .utils import load_patterns
-
-#TO DO: need to take status3 as priority, if blank take status
-#Smoking  History: > 3 months .. what does this mean?
-
 class TobaccoClassifier:
     def __init__(self, preprocessing_file, classification_file, additional_file, questionnaire_file, questionnaire_classification_file):
         """
@@ -53,18 +49,23 @@ class TobaccoClassifier:
         def determine_status(test_value):
             if isinstance(test_value, list):
                 test_value = ' '.join(test_value)
+            if test_value.strip() == "" or test_value=="-":
+                return 'NON SMOKER'
             test_value_lower = test_value.lower()
 
             non_smoker_terms = self.questionnaire_classification_pattern.get("NON SMOKER", [])
             smoker_terms = self.questionnaire_classification_pattern.get("CURRENT SMOKER", [])
             quit_terms = self.questionnaire_classification_pattern.get("QUIT SMOKER", [])
             neg_terms = self.questionnaire_classification_pattern.get("NEG_TERMS", [])
-            non_smoker_conditions = any(term in test_value_lower for term in non_smoker_terms)
-            quit_conditions = any(term in test_value_lower for term in quit_terms) and not any(neg_term in test_value_lower for neg_term in neg_terms)
-            smoker_conditions = any(term in test_value_lower for term in smoker_terms) and not non_smoker_conditions
 
-            if non_smoker_conditions or quit_conditions:
+            non_smoker_conditions = any(re.search(r'\b' + re.escape(term) + r'\b', test_value_lower) for term in non_smoker_terms)
+            quit_conditions = any(re.search(r'\b' + re.escape(term) + r'\b', test_value_lower) for term in quit_terms) and not any(re.search(r'\b' + re.escape(neg_term) + r'\b', test_value_lower) for neg_term in neg_terms)
+            smoker_conditions = any(re.search(r'\b' + re.escape(term) + r'\b', test_value_lower) for term in smoker_terms) and not non_smoker_conditions
+
+            if non_smoker_conditions:
                 return 'NON SMOKER'
+            elif quit_conditions:
+                return 'QUIT SMOKER'
             elif smoker_conditions:
                 return 'CURRENT SMOKER'
             else:
@@ -74,7 +75,7 @@ class TobaccoClassifier:
 
         return df
 
-    def formatted_va_notes(self, df: pd.DataFrame, text_column:str):
+    def formatted_va_notes(self, df: pd.DataFrame, text_column: str):
         non_smoker_terms = self.additional_patterns.get("NON SMOKER", [])
         smoker_terms = self.additional_patterns.get("CURRENT SMOKER", [])
         former_smoker_terms = self.additional_patterns.get("FORMER SMOKER", [])
@@ -93,7 +94,8 @@ class TobaccoClassifier:
         """
         pattern = self.preprocessing_patterns.get("snippet_patterns")[0] 
         df['snippets'] = df[text_column].apply(
-            lambda x: '; '.join(' '.join(match) if isinstance(match, tuple) else match for match in re.findall(pattern, x, re.IGNORECASE))
+            lambda x: '; '.join(' '.join(match) if isinstance(match, tuple)
+                                else match for match in re.findall(pattern, x, re.IGNORECASE))
         )
         df['snippets'] = df['snippets'].astype('str')
         return df 
@@ -105,6 +107,7 @@ class TobaccoClassifier:
         :return: DataFrame with preprocessed snippets
         """
         df['preprocessed_snippets'] = df['snippets'].astype('str')
+        df['preprocessed_snippets'] = df['preprocessed_snippets'].str.lower()
         for replacement, patterns in self.preprocessing_patterns['standardization_patterns1']:
             pattern = "|".join(patterns)
             matched = df['preprocessed_snippets'].str.contains(pattern, regex=True, case=False)
@@ -130,27 +133,22 @@ class TobaccoClassifier:
 
     def classify_status(self, status):
         """
-        Classifying snippets into 'NON SMOKER', 'CURRENT SMOKER', 'FORMER SMOKER', or 'QUIT SMOKER'
-        while considering proximity to the word "smoke". If distances are equal, the preceding word is prioritized.
-
+        Classifying snippets into 'former/current/non smoker'
         :param status: Column in df will be classified
-        :return: Tobacco Use classification and matching keyword
+        :return: Tobacco Use classification
         """
         classification_patterns = self.classification_patterns
         target_word = "smoke"
         target_pattern = re.compile(r'\b' + re.escape(target_word) + r'\b', re.IGNORECASE)
 
-        # Initialize variables for tracking the best classification
         best_classification = None
-        closest_distance = float('inf')  # Use infinity for initial comparisons
+        closest_distance = float('inf')
         matched_keyword = None
 
-        # Locate occurrences of the target word ("smoke")
         target_match = target_pattern.search(status)
 
-        # If "smoke" is found in the status
         if target_match:
-            target_position = target_match.start()  # Get the position of "smoke"
+            target_position = target_match.start()
 
             for classification, words in classification_patterns.items():
                 for word in words:
@@ -158,33 +156,29 @@ class TobaccoClassifier:
                     word_match = word_pattern.search(status)
 
                     if word_match:
-                        word_position = word_match.start()  # Get the position of the matched word
+                        word_position = word_match.start()
 
-                        if word_position < target_position:  # Keyword is before "smoke"
+                        if word_position < target_position:
                             distance = target_position - (word_position + len(word_match.group()))
-                        else:  # Keyword is after "smoke"
+                        else:
                             distance = word_position - target_position
-
-                        # Update the best classification based on distance
-                        if distance < closest_distance:
-                            closest_distance = distance
-                            best_classification = classification
-                            matched_keyword = word_match.group()  # Get the matched keyword
-                        elif distance == closest_distance:  # Check for equal distance
-                            if word_position < target_position: 
-                                # Prioritize the preceding word
+                        if distance <= 10:
+                            if distance < closest_distance:
+                                closest_distance = distance
                                 best_classification = classification
                                 matched_keyword = word_match.group()
+                            elif distance == closest_distance:
+                                if word_position < target_position:
+                                    best_classification = classification
+                                    matched_keyword = word_match.group()
 
-        # If no classification was assigned, check strictly based on matches in the JSON patterns.
         if best_classification is None:
-            # Only classify as CURRENT SMOKER if a pattern exists that implies active smoking
             for keywords in classification_patterns.get("CURRENT SMOKER", []):
                 if re.search(keywords, status, re.IGNORECASE):
                     best_classification = "CURRENT SMOKER"
                     matched_keyword = target_word
                     break
-            # If no patterns were matched, classify as UNKNOWN
+
             if best_classification is None:
                 best_classification = "UNKNOWN"
 
