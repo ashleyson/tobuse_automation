@@ -5,11 +5,11 @@ from .utils import load_patterns
 class VANotesClassification:
     def __init__(self, VA_questionnaire_extraction_file: str, 
                  VA_questionnaire_classification_file: str, 
-                 additional_file: str):
+                 additional__VA_patterns_file: str):
         """Load extraction and classification patterns during initialization."""
         self.VA_questionnaire_extraction_terms = load_patterns(VA_questionnaire_extraction_file)
         self.VA_questionnaire_classification_terms = load_patterns(VA_questionnaire_classification_file)
-        self.VA_additional_terms = load_patterns(additional_file)
+        self.VA_additional_terms = load_patterns(additional__VA_patterns_file)
 
     def process_VA_data(self, df: pd.DataFrame, text_column: str) -> pd.DataFrame:
         """

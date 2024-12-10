@@ -8,9 +8,9 @@ df = pd.read_excel('data/test.xlsx')
 boiler_plate_file = 'res/preprocessor/boiler_plate.json'
 snippet_extraction_file = 'res/preprocessor/snippet_extraction.json'
 preprocessing_file = 'res/preprocessor/preprocess.json'
-VA_questionnaire_extraction_file = 'res/extraction/questionnaire.json'
-VA_questionnaire_classification_file = 'res/classification/questionnaire_classification.json'
-additional_file = 'res/classification/additional.json'
+VA_questionnaire_extraction_file = 'res/va_formatted/VA_questionnaire_extraction.json'
+VA_questionnaire_classification_file = 'res/va_formatted/VA_questionnaire_classification.json'
+additional_VA_patterns_file = 'res/va_formatted/additional_VA_patterns.json'
 classification_file = 'res/classification/classify.json'
 
 
@@ -19,7 +19,7 @@ preprocessor = Preprocessor(boiler_plate_file, snippet_extraction_file, preproce
 processed_df = preprocessor.process_data(df, 'ReportText')
 
 #VA FORMAT NOTES
-vanotesclassification = VANotesClassification(VA_questionnaire_extraction_file, VA_questionnaire_classification_file, additional_file)
+vanotesclassification = VANotesClassification(VA_questionnaire_extraction_file, VA_questionnaire_classification_file, additional_VA_patterns_file)
 processed_df = vanotesclassification.process_VA_data(processed_df, 'ReportText')
 
 #classification
