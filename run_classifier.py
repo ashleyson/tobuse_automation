@@ -11,7 +11,6 @@ preprocessing_file = 'res/preprocessor/preprocess.json'
 VA_questionnaire_extraction_file = 'res/va_formatted/VA_questionnaire_extraction.json'
 VA_questionnaire_classification_file = 'res/va_formatted/VA_questionnaire_classification.json'
 additional_VA_patterns_file = 'res/va_formatted/additional_VA_patterns.json'
-# classification
 current_user_file = 'res/concept_tagger/current_user.json'
 former_user_file = 'res/concept_tagger/former_user.json'
 quit_user_file = 'res/concept_tagger/quit_user.json'
