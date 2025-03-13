@@ -34,7 +34,9 @@ Ensure you have Python 3.7+ installed along with the required dependencies.
 
 **Usage**
 To run the classifier and detect tobacco use from clinical text:
+```plaintext
   python run_classifier.py --input data/input.csv --output results.csv
+```
 
 **Contact**
 For any questions, please contact yewon.son@gmail.com
