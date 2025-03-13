@@ -44,7 +44,7 @@ To run the classifier and detect tobacco use from clinical text:
 - ```--text_columns```: Name of the column containing text data.
 
 **Notes**:
-- THe input file **must be in CSV format**. If using an Excel file, convert it to CSV or modify the script to use ```plaintext pd.read_excel()```.
+- The input file **must be in CSV format**. If using an Excel file, convert it to CSV or modify the script to use ```plaintext pd.read_excel()```.
 
 **Contact**
 For any questions, please contact yewon.son@gmail.com
