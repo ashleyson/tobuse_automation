@@ -35,13 +35,13 @@ Ensure you have Python 3.7+ installed along with the required dependencies.
 
 **Usage**
 To run the classifier and detect tobacco use from clinical text:
-```plaintext
+```
 python run_classifier.py --input data/input.csv --output results.csv --text_column ReportText
 ```
 **Arguments**:
-- ```plaintext --input```: Path to the input CSV file.
-- ```plaintext --output```: Path to save the output CSV file.
-- ```plaintext --text_columns```: Name of the column containing text data.
+- ```--input```: Path to the input CSV file.
+- ```--output```: Path to save the output CSV file.
+- ```--text_columns```: Name of the column containing text data.
 
 **Notes**:
 - THe input file **must be in CSV format**. If using an Excel file, convert it to CSV or modify the script to use ```plaintext pd.read_excel()```.
