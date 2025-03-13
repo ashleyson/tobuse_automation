@@ -23,10 +23,14 @@ Ensure you have Python 3.7+ installed along with the required dependencies.
 
 **Setup**
 1. Clone the repository:
+```plaintext
    git clone https://github.com/ashleyson/tobuse_automation.git
    cd tobuse_automation
+```
 2. Install dependencies:
+```plaintext
    pip install -r requirements.txt
+```
 
 **Usage**
 To run the classifier and detect tobacco use from clinical text:
