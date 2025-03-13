@@ -8,6 +8,7 @@ tobuse_automation is an automated pipeline for detecting tobacco use from clinic
 - **Sequence Extraction**: Extracts relevant sequences from text to enhance classification.
 
 **Repository Structure**
+```plaintext
 ├── classifier/          # Contains classification models and scripts
 ├── data/               # Dataset for training and evaluation
 ├── res/                # Resources such as dictionaries and headers
@@ -15,7 +16,7 @@ tobuse_automation is an automated pipeline for detecting tobacco use from clinic
 ├── run_classifier.py   # Main script to run the classifier
 ├── output2.csv         # Sample output file
 ├── README.md           # Project documentation
-
+```
 **Installation**
 **Prerequisites**
 Ensure you have Python 3.7+ installed along with the required dependencies. 
